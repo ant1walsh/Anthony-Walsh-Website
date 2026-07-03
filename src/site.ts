@@ -212,9 +212,9 @@ function homePage() {
           <h1>Hi, my name is <span class="accent">Anthony</span>. 👋🏼</h1>
           <p class="lead">I'm a technical product marketer with experience directing go-to-market strategy for AI infrastructure and applications. I've managed campaigns that increase recurring revenue, user engagement, and customer satisfaction at pre-IPO startups and Fortune 50 enterprises. I'm also a father, writer, and former rugby player based in California.</p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#/projects">explore_work ${I.arrow}</a>
             <a class="btn btn-ghost" href="https://linkedin.com/in/anthonyrwalsh" target="_blank" rel="noopener">${I.linkedin} linkedin</a>
             <a class="btn btn-ghost" href="https://github.com/ant1walsh" target="_blank" rel="noopener">${I.github} github</a>
+            <a class="btn btn-primary" href="https://www.dropbox.com/scl/fo/am6xgxwlad53jspvnog8r/ADC0qwDXn-S1y-G6i-o4APE?rlkey=pdew21hpkyqckppwxppwoqepx&st=l9q5bjyf&dl=0" target="_blank" rel="noopener">portfolio ${I.arrowUR}</a>
           </div>
         </div>
         <div class="hero-photo-col reveal">
