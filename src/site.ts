@@ -78,7 +78,7 @@ const BLOG = [
 ];
 
 const AGENTS = [
-  { name:"Customer Story Generator", glyph:"“ story", desc:"Generates compelling customer case studies and social posts from interview transcripts.", link:"https://github.com/ant1walsh/Customer-Story-Generator" },
+  { name:"Customer Story Generator", glyph:"“ storytelling", desc:"Generates compelling customer case studies and social posts from interview transcripts.", link:"https://github.com/ant1walsh/Customer-Story-Generator" },
   { name:"Product Positioning Generator", glyph:"⚑ positioning", desc:"Generates taglines, positioning statements, and value propositions from product specs.", link:"https://github.com/ant1walsh/Product-Positioning-Generator" },
   { name:"ICP & Persona Analyzer", glyph:"◇ segmentation", desc:"Defines ideal customer profiles as well as buyer and user personas.", link:"https://github.com/ant1walsh/ICP-and-Persona-Analyzer" },
 ];
@@ -334,10 +334,10 @@ function aiPage() {
       <div class="agents-grid">${cards}</div>
       <div class="section-head reveal" style="max-width:none"><span class="label">sample_preview</span><h2>Product Positioning Generator</h2></div>
       <div class="demo-note reveal">
-        <b class="accent">▸ sample preview.</b> The outputs below are representative examples, written to the agent's spec — <b>not</b> live generations. The production agent runs on n8n + Google Gemini + Gmail: it reads your form fields <b>and any uploaded PRD or RFC</b> (parsed by the Information Extractor and given precedence over the form), applies a banned-words governance prompt, and emails a Markdown file with the tagline, positioning statement, and value proposition. <a href="https://github.com/ant1walsh/Product-Positioning-Generator" target="_blank" rel="noopener">See the workflow on GitHub ↗</a>
+        <b class="accent">▸ sample preview.</b> The outputs below are examples of the agent’s output — written to spec, but not live generations. The production agent runs on n8n + Google Gemini + Gmail: it reads your form fields and parses documents, filters any banned words, and emails the user a Markdown file with product messaging. <a href="https://github.com/ant1walsh/Product-Positioning-Generator" target="_blank" rel="noopener">See the workflow on GitHub ↗</a>
       </div>
       <div class="demo reveal">
-        <div class="demo-head"><span class="dots"><i></i><i></i><i></i></span><span class="fn">positioning_generator.n8n</span><span class="live"><span class="pulse"></span>sample</span></div>
+        <div class="demo-head"><span class="dots"><i></i><i></i><i></i></span><span class="fn">product_positioning_generator.json</span><span class="live"><span class="pulse"></span>sample</span></div>
         <div class="mode-tabs" id="modeTabs">
           <button data-mode="product" class="active">◇ new product launch</button>
           <button data-mode="feature">⚑ feature release</button>
@@ -345,7 +345,7 @@ function aiPage() {
         <div class="demo-grid">
           <div class="demo-form" id="demoForm"></div>
           <div class="demo-out" id="demoOut">
-            <div class="placeholder">${I.bolt}<div>pick an example scenario, attach a PRD if you like,<br>then show the sample output.</div></div>
+            <div class="placeholder">${I.bolt}<div>pick a product or feature,<br>then show the sample output.</div></div>
           </div>
         </div>
       </div>
@@ -646,104 +646,93 @@ function initDetail() {
 /* ================= AI DEMO ================= */
 const MODE_FIELDS = {
   product:[
-    {k:'name', label:'Product name', ta:false},
-    {k:'category', label:'Category', ta:false},
-    {k:'icp', label:'ICP / target persona', ta:false},
+    {k:'name', label:'Product name', ta:true},
+    {k:'category', label:'Category', ta:true},
     {k:'problem', label:'Problem statement', ta:true},
     {k:'how', label:'How it works', ta:true},
     {k:'features', label:'Primary features', ta:true},
-    {k:'competitors', label:'Competitors', ta:false},
-    {k:'diff', label:'Competitive differentiator', ta:true},
-    {k:'results', label:'Anticipated results', ta:false},
+    {k:'results', label:'Anticipated results', ta:true},
+    {k:'icp', label:'ICP', ta:true},
+    {k:'persona', label:'Target persona', ta:true},
+    {k:'competitors', label:'Competitors', ta:true},
+    {k:'diff', label:'Competitive differentiators', ta:true},
   ],
   feature:[
-    {k:'name', label:'Feature name', ta:false},
-    {k:'parent', label:'Parent product', ta:false},
-    {k:'persona', label:'User persona', ta:false},
+    {k:'name', label:'Feature name', ta:true},
+    {k:'parent', label:'Parent product', ta:true},
+    {k:'persona', label:'User persona', ta:true},
     {k:'problem', label:'Problem it solves', ta:true},
     {k:'how', label:'How it works', ta:true},
     {k:'benefits', label:'Benefits', ta:true},
-    {k:'alternatives', label:'Comparable alternatives', ta:false},
-    {k:'diff', label:'Competitive differentiator', ta:true},
+    {k:'alternatives', label:'Comparable alternatives', ta:true},
+    {k:'diff', label:'Competitive differentiators', ta:true},
   ],
 };
 const EXAMPLES = {
   product:[
-    { id:'salesintel', label:'SalesIntel Enrichment',
-      values:{ name:'SalesIntel Enrichment', category:'contact data enrichment platform', icp:'RevOps and marketing operations teams', problem:'CRM records quietly decay between manual refreshes, so teams waste spend on bounced sends and stale accounts', how:'de-duplicates, updates, and appends every record with human-verified contact data', features:'human verification, 90-day re-verification, de-duplication, CRM and MAP sync', competitors:'ZoomInfo, Apollo, Clearbit', diff:'contact data confirmed by human researchers and re-verified every 90 days to a 95% accuracy standard', results:'clean, trustworthy CRM records and higher email deliverability' },
+    { id:'intent-signals', label:'Intent Signals Analyzer',
+      values:{ name:'Intent Signals Analyzer', category:'Intent Platform', problem:'Early buying signals for AI infrastructure appear in developer communities, and legacy intent platforms cannot detect these niche keywords. Unaudited LLM scoring for these signals is too unreliable for sales teams to use for outbound prioritization.', how:'Runs a pair of Python agents daily to scan public developer communities and business news for buying signals relevant to AI inference infrastructure, scores signals using an LLM-plus-deterministic-rules pipeline, and posts ranked digests to Slack.', features:'Two daily Slack digests, deterministic scoring computed in Python with auditable ScoreTrace, aggressive post-LLM false-positive guard pipelines, cross-run deduplication, automated firmographic enrichment, and strict source provenance and liveness verification.', results:'Delivers a daily, deduplicated, and auditable digest of who is in-market and why, providing ranked individual developer leads and account-level signals directly to Slack channels.', icp:'AI infrastructure vendors', persona:'Sales and Marketing teams', competitors:'Common Room, 6sense, Demandbase', diff:'Analyzes specific AI-infrastructure and inference vocabulary, uses auditable deterministic scoring rather than untrustworthy unaudited LLMs, and relies on definitive provenance verification rather than LLM hallucinations.' },
       output:{
-        tagline:'Contact data your pipeline can trust.',
-        positioning:'SalesIntel Enrichment is a contact data platform for revenue and marketing operations teams whose CRM records quietly decay between manual refreshes. It de-duplicates, updates, and appends every record with contact data confirmed by human researchers and re-checked every 90 days, so reps stop spending on bounced sends and dead accounts. Where automated providers estimate accuracy, SalesIntel holds a 95% verification standard, turning your database back into a dependable source of pipeline.',
+        tagline:'Intent Signals Analyzer converts developer community activity into verified sales pipeline for AI inference vendors.',
+        positioning:'Intent Signals Analyzer is a specialized Intent Platform that queries public developer communities and business news to identify high-intent buying signals specifically for AI inference vendors. Sales and Marketing teams receive a daily, deduplicated digest of in-market accounts directly in Slack, utilizing deterministic scoring to replace unreliable, unverified LLM assessments. This Intent Platform matches specialized AI-infrastructure and inference vocabulary with verifiable source provenance to eliminate hallucinations and prioritize outreach.',
         uvp:[
-          'Human-verified accuracy: every contact is confirmed by a researcher and re-verified on a 90-day cycle, held to a 95% standard.',
-          'A cleaner CRM, continuously: de-duplication, updates, and appends run in the background, so records stay current without manual list-pulling.',
-          'Less wasted spend: fewer bounced emails and disconnected numbers mean higher deliverability and more efficient outreach.',
-          'Built for RevOps and marketing: it fits your existing CRM and marketing-automation workflows instead of replacing them.',
-          'Priced to prove value: pay-as-you-go credits let teams scale usage against results rather than seat counts.'
+          'Intent Signals Analyzer interprets specialized AI-infrastructure and inference vocabulary within niche developer communities, capturing early buying signals that horizontal intent platforms routinely overlook.',
+          'Sales and Marketing teams gain confidence in account priority through deterministic Python scoring and auditable ScoreTrace metrics that eliminate the ambiguity of unverified LLM scoring.',
+          'Strict source provenance and aggressive post-LLM false-positive guard pipelines ensure sales development representatives receive accurate, verified lead context instead of LLM hallucinations.',
+          'Automated firmographic enrichment and cross-run deduplication distill complex developer activity into two ranked daily Slack digests, delivering actionable individual developer leads directly to active communication channels.'
         ] } },
-    { id:'helix', label:'Helix Vector DB',
-      values:{ name:'Helix', category:'vector database for retrieval-augmented generation', icp:'ML platform and applied-AI engineering teams', problem:'RAG retrieval quality degrades as embeddings scale, and re-indexing stalls production', how:'serves approximate-nearest-neighbor search with incremental, zero-downtime re-indexing', features:'hybrid keyword and vector search, metadata filtering, horizontal sharding', competitors:'Pinecone, Weaviate, pgvector', diff:'incremental re-indexing with no read downtime, plus hybrid search in a single query path', results:'faster, more relevant retrieval that holds up at production scale' },
+    { id:'competitive-intel', label:'Competitive Intel Analyzer',
+      values:{ name:'Competitive Intel Analyzer', category:'Competitive Intelligence', problem:'Marketing and Product teams in the AI infrastructure market spend hours manually tracking rapid competitor updates. Existing commercial competitive-intelligence platforms are expensive and not tuned to the AI infrastructure domains, resulting in off-topic noise and unreliable factual claims.', how:'Searches the previous 24 hours of news for a configurable list of competitors, filters results down to genuine announcements, synthesizes a structured executive brief through a three-tier LLM fallback chain, deterministically verifies the output, and posts the brief directly to a Slack channel.', features:'Multi-query web search queries, two-stage relevance filtering, cross-run URL deduplication, real-time inference cost and performance data, three-tier LLM synthesis with fallback, deterministic output verification, and automated Slack webhook delivery.', results:'Delivers a highly precise, structured daily competitive brief to Slack covering eleven signal categories and key trends, providing trusted factual claims and inline citations at a negligible operating cost.', icp:'AI infrastructure vendors', persona:'Marketing and Product teams', competitors:'Klue, Crayon', diff:'Specifically tuned to the AI-infrastructure domain to eliminate off-topic noise, uses deterministic verification for performance metrics rather than relying on LLM generation, and functions as a Python pipeline delivered entirely via Slack.' },
       output:{
-        tagline:'Retrieval that keeps up with your model.',
-        positioning:'Helix is a vector database built for applied-AI teams whose retrieval-augmented generation slows down exactly when it matters, at production scale. It resolves vector similarity, keyword signals, and metadata filters in a single query path, and re-indexes incrementally so embeddings stay fresh without taking reads offline. Compared with managed indexes that force a rebuild-and-wait cycle, Helix keeps latency low and results relevant as your corpus grows.',
+        tagline:'Competitive Intel Analyzer delivers factual AI infrastructure market intelligence directly to Slack.',
+        positioning:'Competitive Intel Analyzer is a dedicated competitive intelligence pipeline designed for product marketing managers and GTM leads in the AI infrastructure market. This automated solution monitors competitor updates daily, filters out irrelevant market noise, and verifies technical performance claims deterministically before posting structured briefs directly to Slack. Marketing and Product teams gain verified competitor insights at a fraction of the cost of traditional commercial alternatives.',
         uvp:[
-          'Hybrid search in one query: vector similarity, keyword matching, and metadata filters resolve together, so retrieval reflects both meaning and intent.',
-          'Zero-downtime re-indexing: embeddings update incrementally while reads keep serving, avoiding the rebuild stalls that hurt production RAG.',
-          'Predictable at scale: horizontal sharding keeps p99 latency steady as your corpus grows from millions to billions of vectors.',
-          'Fits your stack: drop-in APIs sit alongside your model and orchestration layer rather than replacing them.',
-          'Tuned for relevance: configurable ranking lets teams trade recall and precision per workload.'
+          'AI infrastructure specialization filters out generic technology news to supply GTM leads with highly relevant, noise-free market insights.',
+          'Deterministic output verification reviews competitor performance metrics and drops unreliable claims, ensuring leadership receives only factual data with inline citations.',
+          'Automated Slack webhook delivery sends daily executive briefs covering eleven signal categories directly to internal channels, saving technical operators hours of manual research.',
+          'Three-tier LLM synthesis with fallback guarantees consistent generation of structured summaries even during API service interruptions.'
         ] } },
   ],
   feature:[
-    { id:'reverify', label:'Auto-Reverify',
-      values:{ name:'Auto-Reverify', parent:'SalesIntel Enrichment', persona:'RevOps managers', problem:'records silently decay between manual refreshes', how:'re-checks every contact on a rolling 90-day cycle and flags the fields that changed', benefits:'accurate records without manual list-pulling, and sustained deliverability', alternatives:'manual quarterly list refreshes', diff:'verification by human researchers rather than automated guesses' },
-      output:{ note:'SalesIntel Enrichment now includes Auto-Reverify. For RevOps teams whose records silently decay between manual refreshes, Auto-Reverify re-checks every contact on a rolling 90-day cycle and flags the fields that changed, so your CRM stays accurate without anyone pulling a list. Turn it on from your enrichment settings to keep deliverability high and outreach landing where it should.' } },
-    { id:'hybrid', label:'Hybrid Search (Helix)',
-      values:{ name:'Hybrid Search', parent:'Helix', persona:'applied-AI engineers', problem:'retrieval misses results that match on wording but not meaning, or the reverse', how:'resolves vector similarity and keyword signals in a single query, with metadata filters applied inline', benefits:'higher recall on ambiguous queries without a second system to maintain', alternatives:'bolting a separate keyword index onto the vector store', diff:'one query path for meaning and keywords, with no extra infrastructure' },
-      output:{ note:'Helix now supports Hybrid Search. For applied-AI teams whose retrieval misses results that match on wording but not on meaning, or the reverse, Hybrid Search resolves vector similarity and keyword signals in a single query, with metadata filters applied inline. Enable it per index to improve recall on ambiguous queries without adding a second system to maintain.' } },
+    { id:'spec-decoding', label:'Draft-model speculative decoding',
+      values:{ name:'Draft-model speculative decoding', parent:'Friendli Dedicated Endpoints', persona:'AI/ML Engineers deploying latency-sensitive LLM workloads', problem:'Autoregressive generation runs one target-model forward pass per token, so sequential decoding iterations increasingly dominate inference latency as generations get longer', how:'A smaller, faster draft model proposes multiple candidate tokens; the target model verifies them in a single parallel forward pass. Each token is accepted or rejected against the target’s own next-token distribution, using a verification rule designed to preserve the target’s original output distribution.', benefits:'Higher output speed while preserving output quality; no additional training and no extra models to manage.', alternatives:'N-gram speculative decoding — training-free, reuses repeated N-token patterns from the prompt and prior output', diff:'The draft model generalizes beyond literal repetition — it can propose accurate candidates even when the exact token sequence hasn’t appeared before, sustaining acceptance rates on diverse, open-ended workloads where N-gram match rates decay (and can even add latency)' },
+      output:{ note:'Draft-model speculative decoding for Friendli Dedicated Endpoints employs a smaller, pre-trained draft model to propose candidate tokens that the larger target model verifies in a single parallel forward pass, increasing output speed while preserving output quality. Unlike N-gram speculative decoding, it generalizes beyond literal repetition, so it holds up on diverse, open-ended workloads like agentic pipelines, long-form reasoning, and code completion. Enable it with a single toggle at endpoint creation — no code changes required.' } },
+    { id:'host-kv-cache', label:'Host KV Cache',
+      values:{ name:'Host KV Cache', parent:'Friendli Dedicated Endpoints', persona:'AI/ML Engineers running long-context or high-concurrency production workloads', problem:'KV caches live in GPU VRAM and compete with model weights and active inference for it. At long context or high concurrency the cache fills up, entries get evicted, and hit rates suffer', how:'Users enable host KV cache for Dedicated Endpoints with a one-click toggle to attach additional host (CPU) memory for KV cache storage. When GPU VRAM fills, the endpoints transparently offload overflow to host memory instead of evicting entries, then transfer entries back to VRAM when needed for active inference.', benefits:'Cache capacity scales with system memory rather than GPU VRAM, without additional GPU hardware; avoids eviction-driven hit-rate loss; recovers capacity and throughput on long-context inference, with no code changes or infrastructure setup.', alternatives:'Provisioning larger-VRAM GPUs or more GPUs; accepting eviction and recomputing prefixes.', diff:'Fully managed host KV cache solution — offloading and fetching happens automatically with no configuration or API changes, delivered as a one-click toggle in Friendli Suite.' },
+      output:{ note:'Host KV Cache extends KV cache storage into host (CPU) memory, so when GPU VRAM fills up, Dedicated Endpoints transparently offload cache overflow instead of evicting it — then transfer entries back when active inference needs them. Cache capacity now scales with system memory rather than GPU VRAM, which matters most for long-context, high-concurrency, and prefix-heavy workloads like multi-turn chat, RAG, document Q&A, and code assistants. Turn it on with a one-click toggle at endpoint creation; no API changes required.' } },
   ],
 };
-let demoMode='product', exampleId='salesintel', prdName='';
+let demoMode='product', exampleId='intent-signals';
 function initDemo() {
   const tabs=document.getElementById('modeTabs'); if(!tabs) return;
-  demoMode='product'; exampleId=EXAMPLES.product[0].id; prdName='';
+  demoMode='product'; exampleId=EXAMPLES.product[0].id;
   renderDemoForm();
   tabs.addEventListener('click', e=>{
     const b=e.target.closest('[data-mode]'); if(!b) return;
-    demoMode=b.dataset.mode; exampleId=EXAMPLES[demoMode][0].id; prdName='';
+    demoMode=b.dataset.mode; exampleId=EXAMPLES[demoMode][0].id;
     tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));
     renderDemoForm(); resetDemoOut();
   });
 }
 function resetDemoOut(){
-  document.getElementById('demoOut').innerHTML=`<div class="placeholder">${I.bolt}<div>pick an example scenario, attach a PRD if you like,<br>then show the sample output.</div></div>`;
+  document.getElementById('demoOut').innerHTML=`<div class="placeholder">${I.bolt}<div>pick a product or feature,<br>then show the sample output.</div></div>`;
 }
 function currentExample(){ return EXAMPLES[demoMode].find(x=>x.id===exampleId)||EXAMPLES[demoMode][0]; }
 function renderDemoForm() {
   const f=document.getElementById('demoForm');
   const ex=currentExample();
-  const opts=EXAMPLES[demoMode].map(x=>`<option value="${x.id}" ${x.id===exampleId?'selected':''}>${x.label}</option>`).join('');
   const fields=MODE_FIELDS[demoMode].map(fl=>{
     const v=esc(ex.values[fl.k]||'');
+    if(fl.k==='name'){
+      const opts=EXAMPLES[demoMode].map(x=>`<option value="${x.id}" ${x.id===exampleId?'selected':''}>${esc(x.values.name)}</option>`).join('');
+      return `<label>${fl.label}</label><select class="ex" id="exSelect">${opts}</select>`;
+    }
     return `<label>${fl.label}</label>${fl.ta?`<textarea id="d-${fl.k}">${v}</textarea>`:`<input id="d-${fl.k}" value="${v}" />`}`;
   }).join('');
   f.innerHTML=`
-    <label>example scenario</label>
-    <select class="ex" id="exSelect">${opts}</select>
     ${fields}
-    <label>attach PRD / RFC (optional)</label>
-    <div class="demo-file">
-      <label class="file-btn" for="prdFile">⬆ upload PDF / RFC</label>
-      <input type="file" id="prdFile" accept=".pdf,.doc,.docx,.md,.txt" />
-      <div class="file-name" id="fileNameBox">${prdName?('▸ '+esc(prdName)+' — parsed by the Information Extractor in the live workflow'):''}</div>
-    </div>
     <button class="btn btn-primary" id="sampleBtn" style="margin-top:18px;width:100%;justify-content:center">${I.bolt} show sample output</button>`;
-  document.getElementById('exSelect').addEventListener('change', e=>{ exampleId=e.target.value; prdName=''; renderDemoForm(); resetDemoOut(); });
-  document.getElementById('prdFile').addEventListener('change', e=>{
-    prdName=(e.target.files && e.target.files[0]) ? e.target.files[0].name : '';
-    const box=document.getElementById('fileNameBox');
-    if(box) box.innerHTML = prdName ? ('▸ '+esc(prdName)+' — parsed by the Information Extractor in the live workflow') : '';
-  });
+  document.getElementById('exSelect').addEventListener('change', e=>{ exampleId=e.target.value; renderDemoForm(); resetDemoOut(); });
   document.getElementById('sampleBtn').addEventListener('click', showSample);
 }
 const BANNED=["seamless","seamlessly","end-to-end","groundbreaking","revolutionary","cutting-edge","game-changing","game changing","best-in-class","world-class","synergy","synergies","paradigm","unparalleled"];
@@ -774,7 +763,6 @@ function showSample() {
   }
   const foot=[];
   foot.push(`<b>▸ sample</b> representative output for the “${esc(ex.label)}” preset — not a live generation.`);
-  if(prdName) foot.push(`<b>▸ input</b> ${esc(prdName)} would be parsed by the Information Extractor (Gemini) and given precedence over the form.`);
   foot.push(`<b>▸ governance</b> banned-words check passed — no filler (“seamless”, “end-to-end”, “groundbreaking”…) present.`);
   setTimeout(()=>typeOut(out, full, foot.join('<br>')), 620);
 }
