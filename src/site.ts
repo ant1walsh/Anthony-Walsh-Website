@@ -334,7 +334,7 @@ function aiPage() {
       <div class="agents-grid">${cards}</div>
       <div class="section-head reveal" style="max-width:none"><span class="label">sample_preview</span><h2>Product Positioning Generator</h2></div>
       <div class="demo-note reveal">
-        <b class="accent">▸ sample preview.</b> The outputs below are examples of the agent’s output — written to spec, but not live generations. The production agent runs on n8n + Google Gemini + Gmail: it reads your form fields and parses documents, filters any banned words, and emails the user a Markdown file with product messaging. <a href="https://github.com/ant1walsh/Product-Positioning-Generator" target="_blank" rel="noopener">See the workflow on GitHub ↗</a>
+        <b class="accent">▸ sample preview.</b> The samples below are examples of the agent’s output — written to spec, but not live generations. The production agent runs on n8n + Google Gemini + Gmail: it reads your form fields and parses documents, filters any banned words, and emails the user a Markdown file with product messaging. <a href="https://github.com/ant1walsh/Product-Positioning-Generator" target="_blank" rel="noopener">See the workflow on GitHub ↗</a>
       </div>
       <div class="demo reveal">
         <div class="demo-head"><span class="dots"><i></i><i></i><i></i></span><span class="fn">product_positioning_generator.json</span><span class="live"><span class="pulse"></span>sample</span></div>
