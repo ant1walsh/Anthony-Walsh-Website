@@ -26,3 +26,6 @@ dist-ssr
 # vite temp
 vite.config.ts.timestamp-*
 .workspace/
+
+# staged for manual deletion
+_to_delete/
