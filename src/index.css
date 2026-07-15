@@ -259,6 +259,9 @@ html[data-theme="light"] .co-SalesIntel { background:hsl(0 0% 0%/.05); }
 .demo-form input, .demo-form textarea { width:100%; padding:.6rem .75rem; border-radius:var(--radius); border:1px solid hsl(var(--border-2)); background:hsl(var(--bg)); color:hsl(var(--text)); font-family:var(--font-body); font-size:.88rem; transition:border-color .2s, box-shadow .2s; }
 .demo-form input:focus, .demo-form textarea:focus { outline:none; border-color:hsl(var(--cobalt)); box-shadow:0 0 0 3px hsl(var(--cobalt)/.16); }
 .demo-form textarea { resize:vertical; min-height:56px; }
+.demo-form input[readonly], .demo-form textarea[readonly] { cursor:default; }
+.demo-form input[readonly]:focus, .demo-form textarea[readonly]:focus { border-color:hsl(var(--border-2)); box-shadow:none; }
+.demo-form textarea[readonly] { resize:none; }
 .demo-form select.ex { width:100%; padding:.6rem .75rem; border-radius:var(--radius); border:1px solid hsl(var(--cobalt)/.5); background:hsl(var(--bg)); color:hsl(var(--text)); font-family:var(--font-mono); font-size:.82rem; cursor:pointer; }
 .demo-file input[type=file] { display:none; }
 .file-btn { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-mono); font-size:.74rem; padding:.55rem .8rem; border:1px dashed hsl(var(--border-2)); border-radius:var(--radius); color:hsl(var(--muted)); cursor:pointer; transition:border-color .2s, color .2s; width:100%; justify-content:center; }

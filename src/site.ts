@@ -208,7 +208,7 @@ function homePage() {
     <div class="wrap">
       <div class="hero-layout">
         <div class="hero-copy">
-          <div class="term-status"><span class="live"></span> marketing director @ demodoc — ai automation studio</div>
+          <div class="term-status"><span class="live"></span> marketing director @ demodoc — gtm engineering studio</div>
           <h1>Hi, my name is <span class="accent">Anthony</span>. 👋🏼</h1>
           <p class="lead">I'm a technical product marketer with experience directing go-to-market strategy for AI infrastructure and applications. I've managed campaigns that increase recurring revenue, user engagement, and customer satisfaction at pre-IPO startups and Fortune 50 enterprises. I'm also a father, writer, and former rugby player based in California.</p>
           <div class="hero-cta">
@@ -727,7 +727,7 @@ function renderDemoForm() {
       const opts=EXAMPLES[demoMode].map(x=>`<option value="${x.id}" ${x.id===exampleId?'selected':''}>${esc(x.values.name)}</option>`).join('');
       return `<label>${fl.label}</label><select class="ex" id="exSelect">${opts}</select>`;
     }
-    return `<label>${fl.label}</label>${fl.ta?`<textarea id="d-${fl.k}">${v}</textarea>`:`<input id="d-${fl.k}" value="${v}" />`}`;
+    return `<label>${fl.label}</label>${fl.ta?`<textarea id="d-${fl.k}" readonly>${v}</textarea>`:`<input id="d-${fl.k}" value="${v}" readonly />`}`;
   }).join('');
   f.innerHTML=`
     ${fields}
