@@ -455,7 +455,7 @@ function contactPage() {
       <div class="cal-frame reveal">
         <div class="term-bar"><i></i><i></i><i></i><span class="fn">calendly — book a meeting</span></div>
         <div id="calendlyEmbed" style="min-width:320px;height:700px">
-          <div class="cal-fallback">loading calendar… if it doesn't appear, <a class="accent" href="https://calendly.com/antrobertwalsh/pmm" target="_blank" rel="noopener">open Calendly ↗</a></div>
+          <div class="cal-fallback">loading calendar… if it doesn't appear, <a class="accent" href="https://calendly.com/antrobertwalsh/demodoc-gtm-audit" target="_blank" rel="noopener">open Calendly ↗</a></div>
         </div>
       </div>
       <div class="contact-mini reveal" style="margin-top:22px">
@@ -537,7 +537,7 @@ function initContact(){
     if(!document.body.contains(el)) return;
     if(window.Calendly && typeof window.Calendly.initInlineWidget==='function'){
       el.innerHTML='';
-      window.Calendly.initInlineWidget({ url:'https://calendly.com/antrobertwalsh/pmm', parentElement:el });
+      window.Calendly.initInlineWidget({ url:'https://calendly.com/antrobertwalsh/demodoc-gtm-audit', parentElement:el });
     } else if(n++ < 50){ setTimeout(tryInit,150); }
   };
   tryInit();
