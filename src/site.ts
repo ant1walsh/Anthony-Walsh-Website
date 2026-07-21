@@ -4,7 +4,7 @@ export const SHELL_HTML = `<div id="scrollbar"></div>
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="#/" class="brand"><span class="dia"></span> anthony_walsh</a>
+    <a href="/" class="brand"><span class="dia"></span> anthony_walsh</a>
     <nav class="nav-links" id="navLinks"></nav>
     <div class="nav-right">
       <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme"></button>
@@ -243,7 +243,8 @@ function homePage() {
   <section>
     <div class="wrap">
       <div class="section-head reveal"><span class="label">endorsements</span><h2>What people say</h2></div>
-      <div class="tst-wrap reveal" id="tstWrap"></div>
+      <div class="tst-wrap reveal" id="tstWrap">${TESTIMONIALS.map(t=>`
+        <div class="tst-card"><p class="tst-quote">${t.q}</p><p class="tst-author"><b>—</b> ${t.a}</p></div>`).join('')}</div>
     </div>
   </section>
 
@@ -253,8 +254,8 @@ function homePage() {
       <h2 style="margin-top:12px">Let's <span class="accent">work together</span></h2>
       <p>Interested in collaborating or learning more about my work?</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn btn-primary" href="#/projects">view_projects ${I.arrow}</a>
-        <a class="btn btn-ghost" href="#/contact">get_in_touch</a>
+        <a class="btn btn-primary" href="/projects">view_projects ${I.arrow}</a>
+        <a class="btn btn-ghost" href="/contact">get_in_touch</a>
       </div>
     </div>
   </section></div>`;
@@ -273,15 +274,15 @@ function projectsPage() {
   <section>
     <div class="wrap">
       <div class="filter-row reveal" id="companyFilters"></div>
-      <div class="result-count" id="resultCount"></div>
-      <div class="project-grid" id="projectGrid"></div>
+      <div class="result-count" id="resultCount">> ${PROJECTS.length} projects</div>
+      <div class="project-grid" id="projectGrid">${pcardsHTML(PROJECTS)}</div>
     </div>
   </section></div>`;
 }
 
 function projectDetailPage(slug) {
   const p = PROJECTS.find(x=>x.slug===slug);
-  if(!p) return `<div class="page"><section><div class="wrap" style="text-align:center;padding:80px 0"><h1>Project not found</h1><a class="btn btn-ghost" href="#/projects" style="margin-top:20px">${I.back} back_to_projects</a></div></section></div>`;
+  if(!p) return `<div class="page"><section><div class="wrap" style="text-align:center;padding:80px 0"><h1>Project not found</h1><a class="btn btn-ghost" href="/projects" style="margin-top:20px">${I.back} back_to_projects</a></div></section></div>`;
   const secs = [
     {id:"scenario",t:"scenario",c:`<p>${p.scenario.split("\n\n").join("</p><p>")}</p>`},
     {id:"challenge",t:"challenge",c:`<p>${p.challenge.split("\n\n").join("</p><p>")}</p>`},
@@ -295,7 +296,7 @@ function projectDetailPage(slug) {
   <section class="detail-hero">
     <div class="hero-glow"></div>
     <div class="wrap">
-      <a class="back-link" href="#/projects">${I.back} back_to_projects</a>
+      <a class="back-link" href="/projects">${I.back} back_to_projects</a>
       <span class="co co-${p.company}" style="display:inline-block;margin-bottom:12px">${p.company}</span>
       <h1>${p.subtitle}</h1>
       <p class="sub">${p.program} · <span class="accent">${p.metric}</span></p>
@@ -305,7 +306,7 @@ function projectDetailPage(slug) {
     <div class="detail-body">
       <nav class="detail-nav" id="detailNav">${nav}</nav>
       <div>${body}
-        <a class="btn btn-primary" href="#/projects" style="margin-top:12px">${I.back} all_projects</a>
+        <a class="btn btn-primary" href="/projects" style="margin-top:12px">${I.back} all_projects</a>
       </div>
     </div>
   </section></div>`;
@@ -381,8 +382,8 @@ function blogPage() {
   <section>
     <div class="wrap">
       <div class="filter-row reveal" id="blogFilters"></div>
-      <div class="result-count" id="blogCount"></div>
-      <div class="blog-grid" id="blogGrid"></div>
+      <div class="result-count" id="blogCount">> ${BLOG.length} posts</div>
+      <div class="blog-grid" id="blogGrid">${BLOG.map((p,i)=>blogTile(p,i)).join('')}</div>
     </div>
   </section></div>`;
 }
@@ -404,8 +405,8 @@ function drawBlog() {
     : `<div class="empty" style="grid-column:1/-1">no posts in this category yet.</div>`;
 }
 
-const RESUME_RAW = "https://www.dropbox.com/scl/fi/p8lh2cfhsj2s82t6kislr/Anthony-Walsh-AI-PMM-Resume.pdf?rlkey=ssp7f8t9jxweh4ettpl1isz5m&raw=1";
-const RESUME_DL = "https://www.dropbox.com/scl/fi/p8lh2cfhsj2s82t6kislr/Anthony-Walsh-AI-PMM-Resume.pdf?rlkey=ssp7f8t9jxweh4ettpl1isz5m&dl=1";
+const RESUME_RAW = "https://www.dropbox.com/scl/fi/5g9wyjplr5zch5amfjdhz/Anthony-Walsh-AI-PMM-Resume.pdf?rlkey=lgqihtt2h2eqcdy66wqlu1su7&st=00bilty9&raw=1";
+const RESUME_DL = "https://www.dropbox.com/scl/fi/5g9wyjplr5zch5amfjdhz/Anthony-Walsh-AI-PMM-Resume.pdf?rlkey=lgqihtt2h2eqcdy66wqlu1su7&st=00bilty9&dl=1";
 const RESUME_VIEW = "https://docs.google.com/viewer?embedded=true&url=" + encodeURIComponent(RESUME_DL);
 function resumePage() {
   return `<div class="page">
@@ -469,11 +470,24 @@ function contactPage() {
 
 /* ================= ROUTER ================= */
 const ROUTES = { "/":homePage, "/projects":projectsPage, "/ai-agents":aiPage, "/blog":blogPage, "/resume":resumePage, "/contact":contactPage };
+const BASE_TITLE = "Anthony Walsh — Technical Product Marketing";
+const PAGE_TITLES = { "/":BASE_TITLE, "/projects":"Projects — Anthony Walsh", "/ai-agents":"AI Agents — Anthony Walsh", "/blog":"Blog — Anthony Walsh", "/resume":"Resume — Anthony Walsh", "/contact":"Contact — Anthony Walsh" };
+export function routeTitle(path){
+  if(path.startsWith('/projects/')){ const p=PROJECTS.find(x=>x.slug===path.split('/projects/')[1]); return p ? (p.title+" — Anthony Walsh") : BASE_TITLE; }
+  return PAGE_TITLES[path] || BASE_TITLE;
+}
+export function renderRoute(path){
+  if(path.startsWith('/projects/')) return projectDetailPage(path.split('/projects/')[1]);
+  return (ROUTES[path]||homePage)();
+}
+export function routeList(){ return Object.keys(ROUTES).concat(PROJECTS.map(p=>'/projects/'+p.slug)); }
+export { NAV };
 let app = null;
-function parseHash(){ let h=location.hash.replace(/^#/,'')||'/'; if(!h.startsWith('/'))h='/'+h; return h; }
+function parsePath(){ let p=location.pathname||'/'; if(p.length>1&&p.endsWith('/'))p=p.slice(0,-1); return p; }
 function render() {
   if(tstTimer) clearInterval(tstTimer);
-  const path = parseHash();
+  const path = parsePath();
+  document.title = routeTitle(path);
   let html;
   if(path.startsWith('/projects/')) html = projectDetailPage(path.split('/projects/')[1]);
   else html = (ROUTES[path]||homePage)();
@@ -497,7 +511,7 @@ function setActiveNav(path) {
 }
 function buildNav() {
   const nl=document.getElementById('navLinks'), mm=document.getElementById('mobileMenu');
-  const items = NAV.map(n=>`<a href="#${n.path}" data-path="${n.path}">${n.label}</a>`).join('');
+  const items = NAV.map(n=>`<a href="${n.path}" data-path="${n.path}">${n.label}</a>`).join('');
   nl.innerHTML=items; mm.innerHTML=items;
 }
 
@@ -621,8 +635,11 @@ function drawProjects() {
   const grid=document.getElementById('projectGrid'), rc=document.getElementById('resultCount');
   rc.textContent=`> ${list.length} ${list.length===1?'project':'projects'}${exState.company!=='All'?' · '+exState.company:''}`;
   if(!list.length){ grid.innerHTML=`<div class="empty" style="grid-column:1/-1">no projects for this company yet.</div>`; return; }
-  grid.innerHTML=list.map((p,i)=>`
-    <a class="pcard" href="#/projects/${p.slug}" style="animation:fadePage .45s var(--ease) ${i*35}ms both">
+  grid.innerHTML=pcardsHTML(list);
+}
+function pcardsHTML(list){
+  return list.map((p,i)=>`
+    <a class="pcard" href="/projects/${p.slug}" style="animation:fadePage .45s var(--ease) ${i*35}ms both">
       <div class="top"><span class="co co-${p.company}">${p.company}</span><span class="idx">${String(i+1).padStart(2,'0')}</span></div>
       <h3>${p.title}</h3>
       <div class="sub">${p.subtitle}</div>
@@ -802,8 +819,19 @@ export function initSite(){
   app = document.getElementById('app');
   document.getElementById('year').textContent = new Date().getFullYear();
   buildNav(); initTheme(); initMobile();
-  window.addEventListener('hashchange', render);
+  window.addEventListener('popstate', render);
+  document.addEventListener('click', e=>{
+    const a = e.target instanceof Element ? e.target.closest('a') : null;
+    if(!a || a.target==='_blank') return;
+    const href = a.getAttribute('href');
+    if(!href || !href.startsWith('/')) return;
+    e.preventDefault();
+    if(href !== parsePath()){ history.pushState({}, '', href); render(); }
+    else window.scrollTo({top:0, behavior:'smooth'});
+  });
   window.addEventListener('scroll', onScroll, {passive:true});
+  // legacy hash URLs (e.g. /#/projects) → path routes
+  if(location.hash.startsWith('#/')) history.replaceState({}, '', location.hash.slice(1));
   render();
 }
-window.portraitFailed = portraitFailed;
+if (typeof window !== 'undefined') (window as any).portraitFailed = portraitFailed;

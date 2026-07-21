@@ -3,7 +3,7 @@
 Personal portfolio for Anthony Walsh — technical product marketing.
 Vite + React + TypeScript. The site is a faithful port of the approved
 single-page design: `src/App.tsx` mounts the tested markup and
-`src/site.ts` runs the page logic (hash router, filters, AI sample,
+`src/site.ts` runs the page logic (path router, filters, AI sample,
 theme toggle, etc.). Styling lives in `src/index.css`.
 
 ## Local development
@@ -66,8 +66,9 @@ DNS resolves, the site is live at https://anthony-walsh.com.
 
 ## Notes
 
-- Routing is hash-based (`/#/projects`, `/#/blog`, ...), which avoids
-  the deep-link 404 issue on static hosts — no extra config needed.
+- Routing is path-based (`/projects`, `/blog`, ...); every route is prerendered
+  to a real HTML file at build time by `scripts/prerender.mjs`, with `404.html`
+  as the SPA fallback for unknown paths.
 - The resume preview loads your Dropbox PDF via an embedded viewer; the
   Contact page embeds Calendly; the podcast cover is pulled from
   YouTube's thumbnail CDN. These are external services.
