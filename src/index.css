@@ -252,7 +252,7 @@ html[data-theme="light"] .co-SalesIntel { background:hsl(0 0% 0%/.05); }
 .mode-tabs { display:flex; border-bottom:1px solid hsl(var(--border)); }
 .mode-tabs button { flex:1; padding:.8rem; font-family:var(--font-mono); font-size:.78rem; background:transparent; border:none; color:hsl(var(--muted)); cursor:pointer; transition:color .2s, background .2s; border-bottom:2px solid transparent; }
 .mode-tabs button.active { color:hsl(var(--cobalt)); border-bottom-color:hsl(var(--cobalt)); background:hsl(var(--cobalt)/.06); }
-.demo-grid { display:grid; grid-template-columns:1fr 1fr; }
+.demo-grid { display:grid; grid-template-columns:1.35fr 1fr; }
 .demo-form { padding:22px; border-right:1px solid hsl(var(--border)); }
 .demo-form label { display:block; font-family:var(--font-mono); font-size:.72rem; color:hsl(var(--muted)); margin:13px 0 5px; }
 .demo-form label:first-child { margin-top:0; }

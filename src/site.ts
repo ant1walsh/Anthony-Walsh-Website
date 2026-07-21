@@ -732,6 +732,7 @@ function renderDemoForm() {
   f.innerHTML=`
     ${fields}
     <button class="btn btn-primary" id="sampleBtn" style="margin-top:18px;width:100%;justify-content:center">${I.bolt} show sample output</button>`;
+  f.querySelectorAll('textarea').forEach(t=>{ t.style.height='auto'; t.style.height=(t.scrollHeight+2)+'px'; });
   document.getElementById('exSelect').addEventListener('change', e=>{ exampleId=e.target.value; renderDemoForm(); resetDemoOut(); });
   document.getElementById('sampleBtn').addEventListener('click', showSample);
 }
