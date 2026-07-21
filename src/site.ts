@@ -47,7 +47,7 @@ const STATS = [
 ];
 
 const TIMELINE = [
-  { date:"2024.03", role:"Marketing Director — Demodoc", desc:'Directs GTM strategy for AI infrastructure & applications at <a href="https://demodoc.ai" target="_blank" rel="noopener">Demodoc</a>.' },
+  { date:"2024.03", role:"Marketing Director — Demodoc", desc:'Developing AI agents to scale growth for AI infrastructure at <a href="https://demodoc.ai" target="_blank" rel="noopener">Demodoc</a>.' },
   { date:"2022.04", role:"Product Marketing Lead — Meta", desc:'Led Product Marketing for Data Infrastructure & Security at <a href="http://meta.com/" target="_blank" rel="noopener">Meta</a>.' },
   { date:"2020.02", role:"Senior PMM — SalesIntel", desc:'Managed Product Marketing for Business Intelligence at <a href="https://www.salesintel.io/" target="_blank" rel="noopener">SalesIntel</a>.' },
   { date:"2019.03", role:"GTM Associate → Strategy Manager", desc:'Grew from GTM Associate at <a href="https://www.pnptc.com" target="_blank" rel="noopener">Plug &amp; Play</a> to GTM Strategy Manager at portfolio company <a href="https://www.arena.im" target="_blank" rel="noopener">Arena</a>.' },
@@ -106,7 +106,7 @@ const PROJECTS = [
     solution:[`Our team focused on overtaking market share from the more popular vendors. Through win/loss interviews, we determined that customers evaluated our solutions against three dozen competitors.`,`I identified the common denominators in features, built a feature comparison chart, and maintained a spreadsheet of quantifiable metrics indicating product quality, differentiation, pricing, and scalability.`,`I demoed each solution in search of bugs, feature limitations, and poor UX.`,`I disseminated competitive intelligence via a dedicated Slack channel, monthly training sessions, battle cards for sales teams, and by making myself available to address prospects' questions.`],
     impact:`Based on my findings, I proposed 9 novel features that many competitors did not offer. The cross-functional enablement program contributed to the acquisition of 8 customers in less than 3 months with contract values 53% higher than average.` },
 
-  { slug:"positioning-and-messaging", program:"Positioning & Messaging", title:"Positioning & Messaging", subtitle:"Defining value propositions", company:"SalesIntel", metric:"4x faster messaging",
+  { slug:"positioning-and-messaging", program:"Positioning & Messaging", title:"Positioning & Messaging", subtitle:"Defining value propositions", company:"SalesIntel", metric:"4x faster messaging validation",
     scenario:`I joined SalesIntel as Senior Product Marketing Manager to launch a new data enrichment product that de-duplicates, updates, and appends contact data records for CRM and Marketing Automation platforms.`,
     challenge:`During early development, I recognized that each team member described the product inconsistently. The extent of its capabilities and limitations were unclear. The market was heavily commoditized with dozens of competing vendors.`,
     objective:`My goal was to establish a clear, concise positioning statement that distinguished SalesIntel's Data Enrichment product. I would craft messaging, gain consensus from cross-functional leaders, and conduct A/B tests to select the highest-converting messaging.`,
