@@ -152,8 +152,8 @@ html[data-theme="light"] .portrait-wrap::after { background:radial-gradient(clos
 
 /* ============ TIMELINE (commit-log style) ============ */
 .timeline { position:relative; max-width:760px; margin:0 auto; padding-left:8px; }
-.timeline::before { content:""; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:hsl(var(--border-2)); }
-.timeline-fill { position:absolute; left:7px; top:6px; width:2px; height:0; background:hsl(var(--cobalt)); box-shadow:0 0 10px hsl(var(--cobalt)/.7); transition:height .1s linear; }
+.timeline::before { content:""; position:absolute; left:17px; top:6px; bottom:6px; width:2px; background:hsl(var(--border-2)); }
+.timeline-fill { position:absolute; left:17px; top:6px; width:2px; height:0; background:hsl(var(--cobalt)); box-shadow:0 0 10px hsl(var(--cobalt)/.7); transition:height .1s linear; }
 .tl-item { position:relative; padding:0 0 34px 40px; }
 .tl-node { position:absolute; left:0; top:5px; width:16px; height:16px; border-radius:50%; background:hsl(var(--bg)); border:2px solid hsl(var(--border-2)); z-index:2; transition:border-color .3s, box-shadow .3s, background .3s; }
 .tl-item.in .tl-node { border-color:hsl(var(--cobalt)); background:hsl(var(--cobalt)); box-shadow:0 0 0 5px hsl(var(--cobalt)/.16); }
