@@ -405,8 +405,8 @@ function drawBlog() {
     : `<div class="empty" style="grid-column:1/-1">no posts in this category yet.</div>`;
 }
 
-const RESUME_RAW = "https://www.dropbox.com/scl/fi/5g9wyjplr5zch5amfjdhz/Anthony-Walsh-AI-PMM-Resume.pdf?rlkey=lgqihtt2h2eqcdy66wqlu1su7&st=00bilty9&raw=1";
-const RESUME_DL = "https://www.dropbox.com/scl/fi/5g9wyjplr5zch5amfjdhz/Anthony-Walsh-AI-PMM-Resume.pdf?rlkey=lgqihtt2h2eqcdy66wqlu1su7&st=00bilty9&dl=1";
+const RESUME_RAW = "https://www.dropbox.com/scl/fi/7s6euq8mphtiakaxmlt4e/Anthony-Walsh-AI-PMM-Resume.pdf?rlkey=woexr99m57zzgger7ctbu1dst&st=vh7euuij&raw=1";
+const RESUME_DL = "https://www.dropbox.com/scl/fi/7s6euq8mphtiakaxmlt4e/Anthony-Walsh-AI-PMM-Resume.pdf?rlkey=woexr99m57zzgger7ctbu1dst&st=vh7euuij&dl=1";
 const RESUME_VIEW = "https://docs.google.com/viewer?embedded=true&url=" + encodeURIComponent(RESUME_DL);
 function resumePage() {
   return `<div class="page">
