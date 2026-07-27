@@ -79,8 +79,8 @@ const BLOG = [
 
 const AGENTS = [
   { name:"ICP & Persona Analyzer", glyph:"◇ segmentation", desc:"Defines ideal customer profiles as well as buyer and user personas.", link:"https://github.com/ant1walsh/ICP-and-Persona-Analyzer" },
-  { name:"Customer Story Generator", glyph:"“ storytelling", desc:"Generates compelling customer case studies and social posts from interview transcripts.", link:"https://github.com/ant1walsh/Customer-Story-Generator" },
   { name:"Product Positioning Generator", glyph:"⚑ positioning", desc:"Generates taglines, positioning statements, and value propositions from product specs.", link:"https://github.com/ant1walsh/Product-Positioning-Generator" },
+  { name:"Customer Story Generator", glyph:"“ storytelling", desc:"Generates compelling customer case studies and social posts from interview transcripts.", link:"https://github.com/ant1walsh/Customer-Story-Generator" },
 ];
 
 /* program === canonical product marketing program (built to group future case studies) */
