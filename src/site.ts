@@ -49,7 +49,7 @@ const STATS = [
 const TIMELINE = [
   { date:"2024.03", role:"Marketing Director — Demodoc", desc:'Developing AI agents to scale growth for AI infrastructure at <a href="https://demodoc.ai" target="_blank" rel="noopener">Demodoc</a>.' },
   { date:"2022.04", role:"Product Marketing Lead — Meta", desc:'Led Product Marketing for Data Infrastructure & Security at <a href="http://meta.com/" target="_blank" rel="noopener">Meta</a>.' },
-  { date:"2020.02", role:"Senior PMM — SalesIntel", desc:'Managed Product Marketing for Business Intelligence at <a href="https://www.salesintel.io/" target="_blank" rel="noopener">SalesIntel</a>.' },
+  { date:"2021.08", role:"Senior PMM — SalesIntel", desc:'Managed Product Marketing for Business Intelligence at <a href="https://www.salesintel.io/" target="_blank" rel="noopener">SalesIntel</a>.' },
   { date:"2019.03", role:"GTM Associate → Strategy Manager", desc:'Grew from GTM Associate at <a href="https://www.pnptc.com" target="_blank" rel="noopener">Plug &amp; Play</a> to GTM Strategy Manager at portfolio company <a href="https://www.arena.im" target="_blank" rel="noopener">Arena</a>.' },
   { date:"2017.11", role:"ABM Specialist — Mintigo", desc:"Scaled growth as Account-Based Marketing Specialist at Mintigo, later acquired by Anaplan." },
   { date:"2016.05", role:"Product Marketing Specialist — BioVirtua", desc:"Started as Product Marketing Specialist for Physical AI & Digital Healthcare at BioVirtua." },
