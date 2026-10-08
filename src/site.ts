@@ -56,12 +56,12 @@ const TIMELINE = [
 ];
 
 const TESTIMONIALS = [
+  { q:"Anthony was an invaluable contributor in addressing the enterprise AI adoption gap. He identified factors that limit or advance enterprise AI deployments and developed a standardized method to evaluate their maturity. These resources will serve as tangible decision frameworks our members can leverage.", a:"Managing Director, Ethical AI Governance Group (EAIGG)" },
+  { q:"I am grateful that Anthony led our team's Product Marketing. He hosted community events to bring users together and share best practices. He improved the end-user experience by developing product tutorials, user guides that address FAQs, and a newsletter to keep end-users informed.", a:"Head of Product & Design, Meta" },
+  { q:"I hired Anthony to run marketing because he displayed ambition, thoughtfulness, and a desire to learn. He did not disappoint, and I was always impressed by his willingness to go above and beyond the aggressive targets he was given.", a:"Director of Marketing, Mintigo" },
+  { q:"Anthony's extensive marketing background enabled us to gain a deeper understanding of our users' needs. He identified actionable product feedback that informed our design improvements. The insights we gathered directly contributed to increased customer adoption and satisfaction scores.", a:"Product Designer, Meta" },
+  { q:"Anthony's ability to propose informed solutions for feature enhancements and product designs was instrumental to the success of our team at Meta. He continuously identifies opportunities for innovation and drives initiatives forward across multiple product portfolios and stakeholders.", a:"Product Design Lead, Meta" },
   { q:"Anthony is a master of his craft. He is incredibly clever when it comes to attention to detail and can strongly back his product positioning with logic and data-verified recommendations.", a:"Growth Marketing Team Lead" },
-  { q:"Anthony was an invaluable contributor in support of EAIGG's mission to address the enterprise AI adoption gap. I strongly recommend Anthony for any role that requires heavy market research and content creation related to AI infrastructure.", a:"Managing Director, Ethical AI Governance Group" },
-  { q:"Special thanks to Anthony for sharing how marketing can make a positive impact. He hosted our first community event, improved the end-user experience with product tutorials and user guides, and published a monthly newsletter.", a:"Head of Product & Design, Meta" },
-  { q:"I hired Anthony to run marketing because he displayed ambition, thoughtfulness, and a desire to learn. He did not disappoint — always willing to go above and beyond the aggressive targets he was given.", a:"Director of Marketing, Mintigo" },
-  { q:"Anthony's entrepreneurial spirit sets him apart; he continuously identifies opportunities for innovation and drives initiatives forward with infectious enthusiasm across multiple product portfolios and stakeholders.", a:"Product Design Lead, Meta" },
-  { q:"Anthony always amazed me with his industry insight and brilliant approaches to solving problems. He is very thorough in everything he does and can be depended upon to get the job done.", a:"Customer Success Manager, SalesIntel" },
 ];
 
 // thumb: optional path to a real cover image; if absent, an on-brand cover is generated.
