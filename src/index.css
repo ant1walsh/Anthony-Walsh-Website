@@ -65,7 +65,9 @@ header.nav { position:fixed; top:0; left:0; right:0; z-index:100; backdrop-filte
   background:hsl(var(--bg)/.78); border-bottom:1px solid hsl(var(--border)); }
 .nav-inner { display:flex; align-items:center; justify-content:space-between; height:64px; }
 .brand { font-family:var(--font-mono); font-weight:600; font-size:.95rem; display:flex; align-items:center; gap:.55rem; }
-.brand .dia { width:11px; height:11px; background:hsl(var(--cobalt)); transform:rotate(45deg); box-shadow:0 0 12px hsl(var(--cobalt)/.8); }
+.brand .mark { display:inline-flex; align-items:center; gap:2px; color:hsl(var(--cobalt)); font-weight:700; letter-spacing:-.02em; }
+.brand .caret { display:inline-block; width:7px; height:13px; background:hsl(var(--cobalt)); box-shadow:0 0 10px hsl(var(--cobalt)/.7); animation:blink 1s step-end infinite; }
+@media (prefers-reduced-motion: reduce) { .brand .caret { animation:none; } }
 .nav-links { display:flex; align-items:center; gap:2px; }
 .nav-links a { position:relative; font-family:var(--font-mono); font-size:.8rem; font-weight:400; color:hsl(var(--muted)); padding:.5rem .75rem; transition:color .2s; }
 .nav-links a:hover { color:hsl(var(--text)); }

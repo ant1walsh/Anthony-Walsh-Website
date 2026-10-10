@@ -4,7 +4,7 @@ export const SHELL_HTML = `<div id="scrollbar"></div>
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="/" class="brand"><span class="dia"></span> anthony_walsh</a>
+    <a href="/" class="brand"><span class="mark">AW<i class="caret"></i></span> anthony_walsh</a>
     <nav class="nav-links" id="navLinks"></nav>
     <div class="nav-right">
       <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme"></button>
